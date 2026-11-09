@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Colorbook</title>
+  <meta name="theme-color" content="#fff7e8">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ===================================================== HOME -->
+  <section id="home" class="view">
+    <header class="home-top">
+      <div class="logo"><img src="icon.svg" alt="" width="36" height="36"> Colorbook</div>
+    </header>
+
+    <div class="hero">
+      <div class="hero-text">
+        <h1>
+          <span class="c1">T</span><span class="c2">u</span><span class="c3">r</span><span class="c4">n</span>
+          family photos into
+          <span class="squiggle">coloring books</span>
+        </h1>
+        <p class="lead">Snap, tweak, print. Make one-of-a-kind coloring pages starring Grandma, the kids, and the dog. They make perfect gifts.</p>
+        <div class="hero-cta">
+          <button id="heroNewBtn" class="btn primary big">Make a coloring book</button>
+          <span class="free-tag">Free · Private · Works offline</span>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 520 380" class="hero-svg">
+          <!-- photo card (color) -->
+          <g transform="rotate(-7 140 190)">
+            <rect x="30" y="50" width="220" height="270" rx="10" fill="#fff" stroke="#2b2340" stroke-width="3"/>
+            <rect x="48" y="68" width="184" height="196" rx="4" fill="#8fd3ff"/>
+            <circle cx="196" cy="104" r="20" fill="#ffd43b"/>
+            <path d="M48 230 Q110 190 170 222 T232 214 V264 H48Z" fill="#69db7c"/>
+            <circle cx="104" cy="168" r="17" fill="#f4c7a1"/>
+            <rect x="86" y="186" width="36" height="52" rx="16" fill="#ff6b6b"/>
+            <circle cx="152" cy="180" r="13" fill="#e0a87c"/>
+            <rect x="139" y="194" width="27" height="40" rx="12" fill="#9775fa"/>
+            <path d="M185 228 q8 -18 22 -6 q10 -14 16 4 v12 h-38z" fill="#c08457"/>
+            <text x="140" y="300" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="18" fill="#2b2340">photo</text>
+          </g>
+          <!-- arrow -->
+          <path class="draw" d="M238 150 C 270 110, 300 120, 312 150" fill="none" stroke="#ff922b" stroke-width="5" stroke-linecap="round"/>
+          <path d="M300 146 l13 6 4 -14" fill="none" stroke="#ff922b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- coloring page (outline) -->
+          <g transform="rotate(5 390 190)">
+            <rect x="282" y="40" width="220" height="285" rx="6" fill="#fff" stroke="#2b2340" stroke-width="3"/>
+            <g fill="none" stroke="#2b2340" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="448" cy="92" r="20"/>
+              <path d="M300 222 Q362 182 422 214 T484 206"/>
+              <circle cx="356" cy="160" r="17"/>
+              <rect x="338" y="178" width="36" height="52" rx="16"/>
+              <circle cx="404" cy="172" r="13"/>
+              <rect x="391" y="186" width="27" height="40" rx="12"/>
+              <path d="M437 220 q8 -18 22 -6 q10 -14 16 4 v12 h-38z"/>
+            </g>
+            <path d="M338 204 h36 v26 h-36z" fill="#ff6b6b" opacity=".85" class="scribble"/>
+            <text x="392" y="300" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="18" fill="#2b2340">coloring page</text>
+          </g>
+          <!-- crayons -->
+          <g transform="translate(250 300) rotate(-28)">
+            <rect width="110" height="20" rx="4" fill="#4dabf7"/><path d="M110 0 l22 10 -22 10z" fill="#4dabf7"/>
+            <rect x="18" width="8" height="20" fill="#1c7ed6"/><rect x="80" width="8" height="20" fill="#1c7ed6"/>
+          </g>
+          <g transform="translate(170 340) rotate(-8)">
+            <rect width="100" height="20" rx="4" fill="#ffd43b"/><path d="M100 0 l22 10 -22 10z" fill="#ffd43b"/>
+            <rect x="18" width="8" height="20" fill="#fab005"/><rect x="72" width="8" height="20" fill="#fab005"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <ol class="steps">
+      <li><span class="step-num s1">1</span><b>Add photos</b><span>Drop in your favorite family pictures.</span></li>
+      <li><span class="step-num s2">2</span><b>Crop &amp; tweak</b><span>Pick a style and zoom in on the faces.</span></li>
+      <li><span class="step-num s3">3</span><b>Print &amp; gift</b><span>Print at home or save a PDF for the print shop.</span></li>
+    </ol>
+
+    <section class="shelf-wrap">
+      <div class="shelf-head">
+        <h2>My books</h2>
+        <label class="btn ghost" for="importInput" title="Open a .colorbook backup file">⬆ Restore a backup</label>
+        <input id="importInput" type="file" accept=".colorbook,.json,application/json" hidden>
+      </div>
+      <div id="shelf" class="shelf"></div>
+    </section>
+
+    <footer class="home-foot">Your photos never leave this device. Everything happens right in your browser.</footer>
+  </section>
+
+  <!-- ===================================================== EDITOR -->
+  <section id="editorView" class="view" hidden>
+    <header class="ed-top">
+      <button id="backBtn" class="btn ghost" title="Back to my books">← My books</button>
+      <input id="bookTitle" class="title-input" type="text" maxlength="80" aria-label="Book title">
+      <span class="spacer"></span>
+      <button id="bookSettingsBtn" class="btn ghost" title="Book settings">⚙ Book settings</button>
+      <label class="btn" for="fileInput">＋ Add photos</label>
+      <button id="printBtn" class="btn primary">🖨 Print / PDF</button>
+      <input id="fileInput" type="file" accept="image/*" multiple hidden>
+    </header>
+
+    <div class="ed-body">
+      <aside class="pages">
+        <div class="pages-head">Pages <span id="pageCount"></span></div>
+        <ol id="pageList" class="page-list"></ol>
+        <label class="add-tile" for="fileInput"><span>＋</span>Add photos</label>
+      </aside>
+
+      <main class="stage-col">
+        <div id="emptyState" class="empty">
+          <div class="empty-art" aria-hidden="true">🖍️</div>
+          <h2>Add your first photos</h2>
+          <p>Drop pictures anywhere on this page, or click the button. Each one becomes a coloring page.</p>
+          <label class="btn primary big" for="fileInput">Choose photos</label>
+          <p class="tip">Tip: close-ups where faces fill the frame make the best pages. You can crop after adding.</p>
+        </div>
+
+        <div id="pageEditor" hidden>
+          <div id="collageBar" class="collage-bar" hidden>
+            <span class="collage-label">This page has <b id="collageCount"></b> pictures:</span>
+            <div id="collageChips" class="chips"></div>
+            <span class="spacer"></span>
+            <button id="splitBtn" class="btn ghost" title="Put each picture back on its own page">✂ Split apart</button>
+          </div>
+          <div class="stage-tools">
+            <button id="cropBtn" class="btn">✂ Crop &amp; rotate</button>
+            <button id="touchBtn" class="btn">🖊 Touch up</button>
+            <button id="combineBtn" class="btn ghost" title="Put the next page's picture on this page too (up to 4)">⊞ Add next page here</button>
+            <span class="spacer"></span>
+            <button id="downloadPngBtn" class="btn ghost" title="Download this page as a PNG">⬇ PNG</button>
+            <button id="removePageBtn" class="btn ghost danger">🗑 Remove</button>
+          </div>
+          <div class="stage" id="stage">
+            <div class="compare" id="compare">
+              <img id="artImg" alt="Coloring page preview">
+              <img id="srcImg" class="src-layer" alt="">
+              <div class="divider" id="divider"><span>⇔</span></div>
+              <input id="compareRange" type="range" min="0" max="100" value="0" aria-label="Compare with photo">
+              <span class="tag tag-l">Photo</span><span class="tag tag-r">Coloring page</span>
+            </div>
+            <div id="busy" class="busy" hidden><span class="crayon-spin">🖍️</span> Drawing lines…</div>
+          </div>
+          <p class="hint-text center">Drag across the picture to compare it with the photo</p>
+          <label class="caption-field">
+            <span>Caption <small>(printed under the picture)</small></span>
+            <input id="caption" type="text" maxlength="120" placeholder="e.g. Grandpa's boat, Lake Cumberland 2025">
+          </label>
+        </div>
+      </main>
+
+      <aside class="controls" id="controls">
+        <h3>Style</h3>
+        <div class="presets">
+          <button data-preset="toddler" class="preset p1"><span>🧸</span>Toddler<small>Big &amp; bold</small></button>
+          <button data-preset="kids" class="preset p2"><span>🖍️</span>Kids<small>Balanced</small></button>
+          <button data-preset="detailed" class="preset p3"><span>✏️</span>Detailed<small>Grown-ups</small></button>
+        </div>
+
+        <h3>Background</h3>
+        <div class="seg" role="radiogroup" aria-label="Background">
+          <label><input type="radio" name="background" value="keep"> Keep all</label>
+          <label><input type="radio" name="background" value="soft"> Simplify</label>
+          <label><input type="radio" name="background" value="remove"> People only</label>
+        </div>
+        <small id="bgNote" class="note"></small>
+
+        <h3>Fine-tune</h3>
+        <div class="sliders">
+          <label><span>Detail <output id="detailOut"></output></span>
+            <input id="detail" type="range" min="1" max="10" step="0.5">
+            <small>Fewer lines ↔ more lines</small>
+          </label>
+          <label><span>Simplify <output id="simplifyOut"></output></span>
+            <input id="simplify" type="range" min="1" max="10" step="0.5">
+            <small>Smooths away grass, hair &amp; fabric</small>
+          </label>
+          <label><span>Line thickness <output id="thicknessOut"></output></span>
+            <input id="thickness" type="range" min="1" max="8" step="0.5">
+            <small>Thicker is easier for little hands</small>
+          </label>
+          <label><span>Clean up specks <output id="cleanupOut"></output></span>
+            <input id="cleanup" type="range" min="0" max="10" step="0.5">
+            <small>Removes tiny dots and dashes</small>
+          </label>
+        </div>
+        <button id="applyAllBtn" class="btn ghost wide">Use this style on every page</button>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===================================================== DIALOGS -->
+  <dialog id="cropDialog" class="dlg crop-dlg">
+    <h2>Crop &amp; rotate</h2>
+    <div class="crop-tools">
+      <div class="seg" role="radiogroup" aria-label="Crop shape">
+        <label><input type="radio" name="cropShape" value="portrait"> ▯ Fill page (tall)</label>
+        <label><input type="radio" name="cropShape" value="landscape"> ▭ Fill page (wide)</label>
+        <label><input type="radio" name="cropShape" value="free"> Free</label>
+      </div>
+      <span class="spacer"></span>
+      <button id="rotLeftBtn" class="btn ghost" title="Rotate left">⟲</button>
+      <button id="rotRightBtn" class="btn ghost" title="Rotate right">⟳</button>
+      <button id="cropResetBtn" class="btn ghost">Reset</button>
+    </div>
+    <div class="crop-area" id="cropArea">
+      <div class="crop-inner" id="cropInner">
+        <img id="cropImg" alt="Photo to crop" draggable="false">
+        <div class="crop-box" id="cropBox">
+          <i data-h="nw"></i><i data-h="ne"></i><i data-h="sw"></i><i data-h="se"></i>
+        </div>
+      </div>
+    </div>
+    <div class="dlg-actions">
+      <button id="cropCancelBtn" class="btn ghost">Cancel</button>
+      <button id="cropApplyBtn" class="btn primary">Apply</button>
+    </div>
+  </dialog>
+
+  <dialog id="bookDialog" class="dlg">
+    <h2>Book settings</h2>
+    <label class="field">Subtitle on the cover
+      <input id="bookSubtitle" type="text" maxlength="120" placeholder="e.g. For Emma, Christmas 2026">
+    </label>
+    <label class="check"><input id="optCover" type="checkbox"> Include a cover page you can color</label>
+    <label class="check"><input id="optRotate" type="checkbox"> Turn wide pictures sideways to fill the page</label>
+    <label class="check"><input id="optBlanks" type="checkbox"> Blank page behind each picture (for double-sided printing, so markers don't bleed)</label>
+    <div class="backup-box">
+      <div>
+        <b>Back up this book</b>
+        <span>Saves the photos and all your settings to a <code>.colorbook</code> file. Keep it somewhere safe, or open it on another device with "Restore a backup".</span>
+      </div>
+      <button id="exportBookBtn" class="btn">⬇ Back up</button>
+    </div>
+    <div class="dlg-actions">
+      <button id="deleteBookBtn" class="btn ghost danger">Delete this book</button>
+      <span class="spacer"></span>
+      <button id="bookDoneBtn" class="btn primary">Done</button>
+    </div>
+  </dialog>
+
+  <dialog id="touchDialog" class="dlg touch-dlg">
+    <h2>Touch up</h2>
+    <div class="crop-tools">
+      <div class="seg" role="radiogroup" aria-label="Tool">
+        <label><input type="radio" name="touchTool" value="pen" checked> 🖊 Pen</label>
+        <label><input type="radio" name="touchTool" value="eraser"> 🧽 Eraser</label>
+      </div>
+      <label class="size-field">Size <input id="touchSize" type="range" min="1" max="10" step="1" value="3"></label>
+      <span class="spacer"></span>
+      <button id="touchUndoBtn" class="btn ghost" title="Undo (Ctrl+Z)">↶ Undo</button>
+      <button id="touchClearBtn" class="btn ghost danger">Clear all touch-ups</button>
+    </div>
+    <p class="touch-hint">Erase stray marks, or draw to close gaps so crayons stay inside the lines. Your touch-ups are kept when you change the style sliders.</p>
+    <div class="crop-area touch-area">
+      <canvas id="touchCanvas"></canvas>
+    </div>
+    <div class="dlg-actions">
+      <button id="touchCancelBtn" class="btn ghost">Cancel</button>
+      <button id="touchDoneBtn" class="btn primary">Done</button>
+    </div>
+  </dialog>
+
+  <dialog id="exportDialog" class="dlg">
+    <h2>Print or save as PDF</h2>
+    <div class="formats" role="radiogroup" aria-label="Format">
+      <label class="format">
+        <input type="radio" name="format" value="full" checked>
+        <span class="format-art full" aria-hidden="true"><i></i></span>
+        <b>Full pages</b>
+        <small>One picture per 8.5 × 11 sheet. Easiest to print and color.</small>
+      </label>
+      <label class="format">
+        <input type="radio" name="format" value="booklet">
+        <span class="format-art booklet" aria-hidden="true"><i></i><i></i></span>
+        <b>Booklet</b>
+        <small>Two pages per sheet, printed on both sides. Fold in half and staple to make a 5.5 × 8.5 book.</small>
+      </label>
+    </div>
+    <p id="exportSummary" class="export-summary"></p>
+    <p id="bookletTip" class="tip-box" hidden>🖨 Print <b>double-sided</b> and choose <b>"flip on short edge"</b>. Stack the sheets in order, fold down the middle, and staple on the fold.</p>
+    <p id="exportProgress" class="export-progress" hidden></p>
+    <div class="dlg-actions">
+      <button id="exportCancelBtn" class="btn ghost">Close</button>
+      <span class="spacer"></span>
+      <button id="printNowBtn" class="btn">🖨 Print</button>
+      <button id="pdfBtn" class="btn primary">⬇ Download PDF</button>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" hidden></div>
+  <div id="dropOverlay" class="drop-overlay" hidden><div>📸 Drop photos to add them</div></div>
+</div>
+
+<div id="printRoot"></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>
+
